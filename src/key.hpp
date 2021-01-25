@@ -14,20 +14,18 @@ namespace msq {
 
 class key {
 private:
-    std::string name;
+    std::string_view name;
 
     template<typename ValueT>
     query expr(const std::string& op, const ValueT& value)
     {
-        return query{name, bson_builder::make_document(bson_builder::kvp(op, value))};
+        return query{std::string{name}, bson_builder::make_document(bson_builder::kvp(op, value))};
     }
 
 public:
-    key(std::string_view name)
-        : name{name} { }
-
-    key(std::string&& name)
-        : name{std::move(name)} { }
+    constexpr key(std::string_view name)
+        : name{name}
+    { }
 
     template<typename ValueT>
     query operator==(const ValueT& value)
@@ -82,9 +80,9 @@ public:
     }
 };
 
-key operator "" _k(const char* str, size_t len)
+constexpr key operator "" _k(const char* str, size_t len)
 {
-    return key{std::string{str, len}};
+    return key{std::string_view{str, len}};
 }
 
 }
