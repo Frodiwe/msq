@@ -57,57 +57,9 @@ include CMakeFiles/mongodb_simple_query.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/mongodb_simple_query.dir/flags.make
 
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o: CMakeFiles/mongodb_simple_query.dir/flags.make
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o: ../src/key.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o -c /tmp/tmp.jIH71kRGed/src/key.cpp
-
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mongodb_simple_query.dir/src/key.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.jIH71kRGed/src/key.cpp > CMakeFiles/mongodb_simple_query.dir/src/key.cpp.i
-
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mongodb_simple_query.dir/src/key.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.jIH71kRGed/src/key.cpp -o CMakeFiles/mongodb_simple_query.dir/src/key.cpp.s
-
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.requires:
-
-.PHONY : CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.requires
-
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.provides: CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.requires
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.provides.build
-.PHONY : CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.provides
-
-CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.provides.build: CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o
-
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o: CMakeFiles/mongodb_simple_query.dir/flags.make
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o: ../src/query.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o -c /tmp/tmp.jIH71kRGed/src/query.cpp
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mongodb_simple_query.dir/src/query.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.jIH71kRGed/src/query.cpp > CMakeFiles/mongodb_simple_query.dir/src/query.cpp.i
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mongodb_simple_query.dir/src/query.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.jIH71kRGed/src/query.cpp -o CMakeFiles/mongodb_simple_query.dir/src/query.cpp.s
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.requires:
-
-.PHONY : CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.requires
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.provides: CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.requires
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.provides.build
-.PHONY : CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.provides
-
-CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.provides.build: CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o
-
-
 CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o: CMakeFiles/mongodb_simple_query.dir/flags.make
 CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o -c /tmp/tmp.jIH71kRGed/src/main.cpp
 
 CMakeFiles/mongodb_simple_query.dir/src/main.cpp.i: cmake_force
@@ -131,20 +83,16 @@ CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o.provides.build: CMakeFiles/mo
 
 # Object files for target mongodb_simple_query
 mongodb_simple_query_OBJECTS = \
-"CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o" \
-"CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o" \
 "CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o"
 
 # External object files for target mongodb_simple_query
 mongodb_simple_query_EXTERNAL_OBJECTS =
 
-mongodb_simple_query: CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o
-mongodb_simple_query: CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o
 mongodb_simple_query: CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o
 mongodb_simple_query: CMakeFiles/mongodb_simple_query.dir/build.make
 mongodb_simple_query: /usr/local/lib/libbsoncxx.so.3.6.1
 mongodb_simple_query: CMakeFiles/mongodb_simple_query.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable mongodb_simple_query"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable mongodb_simple_query"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mongodb_simple_query.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -152,8 +100,6 @@ CMakeFiles/mongodb_simple_query.dir/build: mongodb_simple_query
 
 .PHONY : CMakeFiles/mongodb_simple_query.dir/build
 
-CMakeFiles/mongodb_simple_query.dir/requires: CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o.requires
-CMakeFiles/mongodb_simple_query.dir/requires: CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o.requires
 CMakeFiles/mongodb_simple_query.dir/requires: CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o.requires
 
 .PHONY : CMakeFiles/mongodb_simple_query.dir/requires

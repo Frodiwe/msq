@@ -4,9 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.jIH71kRGed/src/key.cpp" "/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o"
   "/tmp/tmp.jIH71kRGed/src/main.cpp" "/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o"
-  "/tmp/tmp.jIH71kRGed/src/query.cpp" "/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

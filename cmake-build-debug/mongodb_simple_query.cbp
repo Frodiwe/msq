@@ -88,19 +88,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.jIH71kRGed/src/key.cpp">
-			<Option target="mongodb_simple_query"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.jIH71kRGed/src/key.hpp">
-			<Option target="mongodb_simple_query"/>
-		</Unit>
 		<Unit filename="/tmp/tmp.jIH71kRGed/src/main.cpp">
-			<Option target="mongodb_simple_query"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.jIH71kRGed/src/query.cpp">
-			<Option target="mongodb_simple_query"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.jIH71kRGed/src/query.hpp">
 			<Option target="mongodb_simple_query"/>
 		</Unit>
 		<Unit filename="/tmp/tmp.jIH71kRGed/CMakeLists.txt">

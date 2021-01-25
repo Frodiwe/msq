@@ -123,33 +123,6 @@ mongodb_simple_query/fast:
 	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/build
 .PHONY : mongodb_simple_query/fast
 
-src/key.o: src/key.cpp.o
-
-.PHONY : src/key.o
-
-# target to build an object file
-src/key.cpp.o:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o
-.PHONY : src/key.cpp.o
-
-src/key.i: src/key.cpp.i
-
-.PHONY : src/key.i
-
-# target to preprocess a source file
-src/key.cpp.i:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/key.cpp.i
-.PHONY : src/key.cpp.i
-
-src/key.s: src/key.cpp.s
-
-.PHONY : src/key.s
-
-# target to generate assembly for a file
-src/key.cpp.s:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/key.cpp.s
-.PHONY : src/key.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -177,33 +150,6 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/query.o: src/query.cpp.o
-
-.PHONY : src/query.o
-
-# target to build an object file
-src/query.cpp.o:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o
-.PHONY : src/query.cpp.o
-
-src/query.i: src/query.cpp.i
-
-.PHONY : src/query.i
-
-# target to preprocess a source file
-src/query.cpp.i:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/query.cpp.i
-.PHONY : src/query.cpp.i
-
-src/query.s: src/query.cpp.s
-
-.PHONY : src/query.s
-
-# target to generate assembly for a file
-src/query.cpp.s:
-	$(MAKE) -f CMakeFiles/mongodb_simple_query.dir/build.make CMakeFiles/mongodb_simple_query.dir/src/query.cpp.s
-.PHONY : src/query.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... mongodb_simple_query"
 	@echo "... edit_cache"
-	@echo "... src/key.o"
-	@echo "... src/key.i"
-	@echo "... src/key.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/query.o"
-	@echo "... src/query.i"
-	@echo "... src/query.s"
 .PHONY : help
 
 

@@ -11,6 +11,6 @@ include_directories(
         ${MONGOCXX_INCLUDE_DIR}/libbson-1.0
 )
 
-add_executable(mongodb_simple_query src/key.cpp src/query.cpp src/main.cpp)
+add_executable(mongodb_simple_query src/main.cpp)
 
 target_link_libraries(mongodb_simple_query PUBLIC mongo::bsoncxx_shared)

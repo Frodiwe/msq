@@ -10,22 +10,24 @@
 
 #include "query.hpp"
 
-class key
-{
+namespace msq {
+
+class key {
 private:
     std::string name;
 
     template<typename ValueT>
-    query expr(const std::string& op, const ValueT& value) {
-        return query { name, bson_builder::make_document(bson_builder::kvp(op, value)) };
+    query expr(const std::string& op, const ValueT& value)
+    {
+        return query{name, bson_builder::make_document(bson_builder::kvp(op, value))};
     }
 
 public:
-    key(const std::string& name);
+    key(std::string_view name)
+        : name{name} { }
 
-    key(std::string_view name);
-
-    key(std::string&& name);
+    key(std::string&& name)
+        : name{std::move(name)} { }
 
     template<typename ValueT>
     query operator==(const ValueT& value)
@@ -66,14 +68,25 @@ public:
     template<typename ValueT>
     std::enable_if_t<std::is_same_v<std::decay_t<ValueT>, query>, query> operator==(ValueT&& rhs)
     {
-        return query { name, rhs.compile() };
+        return query{name, rhs.compile()};
     }
 
-    query operator!();
+    query operator!()
+    {
+        return expr("$exists", false);
+    }
 
-    operator query();
+    operator query()
+    {
+        return expr("$exists", true);
+    }
 };
 
-key operator"" _k(const char* str, size_t len);
+key operator "" _k(const char* str, size_t len)
+{
+    return key{std::string{str, len}};
+}
+
+}
 
 #endif //KEY_HPP

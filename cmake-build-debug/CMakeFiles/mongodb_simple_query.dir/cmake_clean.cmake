@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o"
-  "CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o"
   "CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o"
   "mongodb_simple_query.pdb"
   "mongodb_simple_query"
