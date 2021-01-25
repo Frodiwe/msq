@@ -1,0 +1,3 @@
+/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/mongodb_simple_query.dir
+/tmp/tmp.jIH71kRGed/cmake-build-debug/CMakeFiles/edit_cache.dir

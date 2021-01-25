@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/mongodb_simple_query.dir/src/key.cpp.o CMakeFiles/mongodb_simple_query.dir/src/query.cpp.o CMakeFiles/mongodb_simple_query.dir/src/main.cpp.o  -o mongodb_simple_query -Wl,-rpath,/usr/local/lib /usr/local/lib/libbsoncxx.so.3.6.1 -lmongo::mongocxx_shared 
