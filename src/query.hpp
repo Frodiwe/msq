@@ -61,7 +61,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, query>, query&> operator&&(T&& rhs)
     {
-        and_builder.append(concatenate(rhs.compile()));
+        and_builder.append(rhs.compile());
 
         return *this;
     }
@@ -69,7 +69,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, key>, query&> operator&&(T&& rhs)
     {
-        and_builder.append(bson_builder::concatenate(query{rhs}));
+        and_builder.append(query{rhs});
 
         return *this;
     }
@@ -77,7 +77,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, query>, query&> operator||(T&& rhs)
     {
-        or_builder.emplace_back(bson_builder::concatenate(rhs.compile()));
+        or_builder.emplace_back(rhs.compile());
 
         return *this;
     }
