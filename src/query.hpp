@@ -17,7 +17,9 @@ namespace msq {
 
 namespace bson_builder = bsoncxx::builder::basic;
 
-using document_builder = bsoncxx::builder::basic::document;
+using document_builder = bson_builder::document;
+using array_builder = bson_builder::array;
+
 using document = bsoncxx::document::value;
 using document_view_or_value = bsoncxx::document::view_or_value;
 using string_view = bsoncxx::stdx::string_view;
@@ -28,34 +30,28 @@ class query {
 private:
     document_builder and_builder;
 
-    std::vector<document> or_builder;
+    array_builder or_builder;
 
     document compile()
     {
         if (not and_builder.view().empty()) {
-            or_builder.emplace_back(and_builder.extract());
+            or_builder.append(and_builder.extract());
         }
 
-        if (or_builder.size() == 1) {
-            return or_builder[0];
+        if (std::distance(or_builder.view().begin(), or_builder.view().end()) == 1) {
+            return document{or_builder.view()[0].get_document().view()};
         }
 
-        auto fields_builder = bson_builder::array{};
-
-        for (const auto& v : or_builder) {
-            fields_builder.append(v);
-        }
-
-        return bson_builder::make_document(bson_builder::kvp("$or", fields_builder.extract()));
+        return bson_builder::make_document(bson_builder::kvp("$or", or_builder.extract()));
     }
 
 public:
     template<typename ValueT>
-    query(string_view name, const ValueT& value)
+    query(string_view name, ValueT&& value)
         : and_builder{},
           or_builder{}
     {
-        and_builder.append(bson_builder::kvp(name, value));
+        and_builder.append(bson_builder::kvp(name, std::forward<ValueT>(value)));
     }
 
     template<typename T>
@@ -69,7 +65,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, key>, query&> operator&&(T&& rhs)
     {
-        and_builder.append(query{rhs});
+        and_builder.append(query{std::forward<T>(rhs)});
 
         return *this;
     }
@@ -77,7 +73,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, query>, query&> operator||(T&& rhs)
     {
-        or_builder.emplace_back(rhs.compile());
+        or_builder.append(rhs.compile());
 
         return *this;
     }

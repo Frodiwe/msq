@@ -19,9 +19,9 @@ private:
     string_view name;
 
     template<typename ValueT>
-    query expr(string_view op, const ValueT& value)
+    query expr(string_view op, ValueT&& value)
     {
-        return query{name, bson_builder::make_document(bson_builder::kvp(op, value))};
+        return query{name, bson_builder::make_document(bson_builder::kvp(op, std::forward<ValueT>(value)))};
     }
 
 public:
@@ -30,9 +30,9 @@ public:
     { }
 
     template<typename ValueT>
-    query operator==(const ValueT& value)
+    query operator==(ValueT&& value)
     {
-        return expr("$eq", value);
+        return expr("$eq", std::forward<ValueT>(value));
     }
 
     template<typename ValueT>
@@ -42,33 +42,33 @@ public:
     }
 
     template<typename ValueT>
-    query operator!=(const ValueT& value)
+    query operator!=(ValueT&& value)
     {
-        return expr("$ne", value);
+        return expr("$ne", std::forward<ValueT>(value));
     }
 
     template<typename ValueT>
-    query operator>=(const ValueT& value)
+    query operator>=(ValueT&& value)
     {
-        return expr("$gte", value);
+        return expr("$gte", std::forward<ValueT>(value));
     }
 
     template<typename ValueT>
-    query operator>(const ValueT& value)
+    query operator>(ValueT&& value)
     {
-        return expr("$gt", value);
+        return expr("$gt", std::forward<ValueT>(value));
     }
 
     template<typename ValueT>
-    query operator<=(const ValueT& value)
+    query operator<=(ValueT&& value)
     {
-        return expr("$lte", value);
+        return expr("$lte", std::forward<ValueT>(value));
     }
 
     template<typename ValueT>
-    query operator<(const ValueT& value)
+    query operator<(ValueT&& value)
     {
-        return expr("$lt", value);
+        return expr("$lt", std::forward<ValueT>(value));
     }
 
     query operator!()
