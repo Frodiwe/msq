@@ -12,18 +12,20 @@
 
 namespace msq {
 
+using string_view = bsoncxx::stdx::string_view;
+
 class key {
 private:
-    std::string_view name;
+    string_view name;
 
     template<typename ValueT>
-    query expr(const std::string& op, const ValueT& value)
+    query expr(string_view op, const ValueT& value)
     {
-        return query{std::string{name}, bson_builder::make_document(bson_builder::kvp(op, value))};
+        return query{name, bson_builder::make_document(bson_builder::kvp(op, value))};
     }
 
 public:
-    constexpr key(std::string_view name)
+    constexpr key(string_view name)
         : name{name}
     { }
 
@@ -31,6 +33,12 @@ public:
     query operator==(const ValueT& value)
     {
         return expr("$eq", value);
+    }
+
+    template<typename ValueT>
+    std::enable_if_t<std::is_same_v<std::decay_t<ValueT>, query>, query> operator==(ValueT&& rhs)
+    {
+        return query{name, rhs.compile()};
     }
 
     template<typename ValueT>
@@ -63,12 +71,6 @@ public:
         return expr("$lt", value);
     }
 
-    template<typename ValueT>
-    std::enable_if_t<std::is_same_v<std::decay_t<ValueT>, query>, query> operator==(ValueT&& rhs)
-    {
-        return query{name, rhs.compile()};
-    }
-
     query operator!()
     {
         return expr("$exists", false);
@@ -82,7 +84,7 @@ public:
 
 constexpr key operator "" _k(const char* str, size_t len)
 {
-    return key{std::string_view{str, len}};
+    return key{string_view{str, len}};
 }
 
 }

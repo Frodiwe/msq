@@ -17,11 +17,10 @@ namespace msq {
 
 namespace bson_builder = bsoncxx::builder::basic;
 
-using bsoncxx::builder::basic::concatenate;
-
 using document_builder = bsoncxx::builder::basic::document;
 using document = bsoncxx::document::value;
 using document_view_or_value = bsoncxx::document::view_or_value;
+using string_view = bsoncxx::stdx::string_view;
 
 class key;
 
@@ -52,7 +51,7 @@ private:
 
 public:
     template<typename ValueT>
-    query(const std::string& name, const ValueT& value)
+    query(string_view name, const ValueT& value)
         : and_builder{},
           or_builder{}
     {
@@ -70,7 +69,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, key>, query&> operator&&(T&& rhs)
     {
-        and_builder.append(concatenate(query{rhs}));
+        and_builder.append(bson_builder::concatenate(query{rhs}));
 
         return *this;
     }
@@ -78,7 +77,7 @@ public:
     template<typename T>
     std::enable_if_t<std::is_same_v<std::decay_t<T>, query>, query&> operator||(T&& rhs)
     {
-        or_builder.emplace_back(concatenate(rhs.compile()));
+        or_builder.emplace_back(bson_builder::concatenate(rhs.compile()));
 
         return *this;
     }
