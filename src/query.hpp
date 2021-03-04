@@ -43,15 +43,18 @@ private:
     string_view op;
 
     template<typename T = ValueL, std::enable_if_t<is_same_template<T, query>, bool> = true>
-    document compile()
+    document compile() const
     {
         return bson_builder::make_document(
-            bson_builder::kvp(op, bson_builder::make_array(bson_builder::concatenate(lhs), bson_builder::concatenate(rhs)))
+            bson_builder::kvp(
+                op,
+                bson_builder::make_array(bson_builder::concatenate(lhs), bson_builder::concatenate(rhs))
+            )
         );
     }
 
     template<typename T = ValueL, std::enable_if_t<std::is_same_v<T, string_view>, bool> = true>
-    document compile()
+    document compile() const
     {
         return bson_builder::make_document(
             bson_builder::kvp(lhs, bson_builder::make_document(bson_builder::kvp(op, rhs)))
@@ -68,21 +71,21 @@ public:
     template<typename T>
     constexpr auto operator&&(T&& rhs)
     {
-        return query<query, T>{std::move(*this), std::forward<T>(rhs), "$and"};
+        return query<query, T>{std::move(*this), std::forward<T>(rhs), string_view{"$and", 4}};
     }
 
     template<typename T>
     constexpr auto operator||(T&& rhs)
     {
-        return query<query, T>{std::move(*this), std::forward<T>(rhs), "$or"};
+        return query<query, T>{std::move(*this), std::forward<T>(rhs), string_view{"$or", 3}};
     }
 
-    operator document()
+    operator document() const
     {
         return compile();
     }
 
-    operator document_view_or_value()
+    operator document_view_or_value() const
     {
         return compile();
     }
