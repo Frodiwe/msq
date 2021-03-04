@@ -8,9 +8,9 @@ int main()
 {
     using msq::operator""_k;
 
-    const bsoncxx::document::value doc = "lol"_k == "kek" or "foo"_k != "bar";
+    const bsoncxx::document::value query = "lol"_k == 5 && "kek"_k == 6 && not "foo"_k;
 
-    std::cout << bsoncxx::to_json(doc.view()) << std::endl;
+    std::cout << bsoncxx::to_json(query) << std::endl;
 
     return 0;
 }
