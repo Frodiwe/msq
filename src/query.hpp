@@ -25,12 +25,12 @@ namespace bson_builder = bsoncxx::builder::basic;
 
 using string_view = bsoncxx::stdx::string_view;
 
-class key;
-
 constexpr string_view operator "" _sv(const char* str, size_t len)
 {
     return string_view{str, len};
 }
+
+class key;
 
 template<typename ValueL, typename ValueR>
 class query {
@@ -45,7 +45,7 @@ private:
 
     string_view op;
 
-    template<typename T = ValueL, std::enable_if_t<is_same_template<T, query> || std::is_same_v<T, key>, bool> = true>
+    template<typename T = ValueL, std::enable_if_t<is_same_template<T, query>, bool> = true>
     document compile() const
     {
         return bson_builder::make_document(
@@ -56,11 +56,11 @@ private:
         );
     }
 
-    template<typename T = ValueL, std::enable_if_t<std::is_same_v<T, string_view>, bool> = true>
+    template<typename T = ValueL, std::enable_if_t<std::is_same_v<T, key>, bool> = true>
     document compile() const
     {
         return bson_builder::make_document(
-            bson_builder::kvp(lhs, bson_builder::make_document(bson_builder::kvp(op, rhs)))
+            bson_builder::kvp(lhs.name, bson_builder::make_document(bson_builder::kvp(op, rhs)))
         );
     }
 
@@ -98,6 +98,9 @@ class key {
 private:
     string_view name;
 
+    template<typename T1, typename T2>
+    friend class query;
+
 public:
     constexpr key(string_view name)
         : name{name}
@@ -106,47 +109,47 @@ public:
     template<typename ValueT>
     constexpr auto operator==(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$eq"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$eq"_sv);
     }
 
     template<typename ValueT>
     constexpr auto operator!=(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$ne"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$ne"_sv);
     }
 
     template<typename ValueT>
     constexpr auto operator>=(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$gte"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$gte"_sv);
     }
 
     template<typename ValueT>
     constexpr auto operator>(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$gt"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$gt"_sv);
     }
 
     template<typename ValueT>
     constexpr auto operator<=(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$lte"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$lte"_sv);
     }
 
     template<typename ValueT>
     constexpr auto operator<(ValueT&& value)
     {
-        return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$lt"_sv);
+        return query<key, ValueT>(std::move(*this), std::forward<ValueT>(value), "$lt"_sv);
     }
 
     constexpr auto not_exists()
     {
-        return query<string_view, bool>(std::move(name), false, "$exists"_sv);
+        return query<key, bool>(std::move(*this), false, "$exists"_sv);
     }
 
     constexpr auto exists()
     {
-        return query<string_view, bool>(std::move(name), true, "$exists"_sv);
+        return query<key, bool>(std::move(*this), true, "$exists"_sv);
     }
 };
 
