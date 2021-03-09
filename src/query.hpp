@@ -45,18 +45,6 @@ private:
 
     string_view op;
 
-//    template<typename T>
-//    std::enable_if_t<std::is_same_v<T, key>, query<string_view, bool>> convert(T&& value) const
-//    {
-//        return value.operator query<string_view, bool>();
-//    }
-//
-//    template<typename T>
-//    std::enable_if_t<is_same_template<std::decay_t<T>, query>, T> convert(T&& value) const
-//    {
-//        return std::forward<T>(value);
-//    }
-
     template<typename T = ValueL, std::enable_if_t<is_same_template<T, query> || std::is_same_v<T, key>, bool> = true>
     document compile() const
     {
@@ -89,10 +77,10 @@ public:
         return query<query, query<T1, T2>>{std::move(*this), std::move(rhs), "$and"_sv};
     }
 
-    template<typename T>
-    constexpr auto operator or(T&& rhs)
+    template<typename T1, typename T2>
+    constexpr auto operator or(query<T1, T2>&& rhs)
     {
-        return query<query, T>{std::move(*this), std::forward<T>(rhs), "$or"_sv};
+        return query<query, query<T1, T2>>{std::move(*this), std::move(rhs), "$or"_sv};
     }
 
     operator document() const
@@ -151,12 +139,12 @@ public:
         return query<string_view, ValueT>(std::move(name), std::forward<ValueT>(value), "$lt"_sv);
     }
 
-    constexpr auto operator!()
+    constexpr auto not_exists()
     {
         return query<string_view, bool>(std::move(name), false, "$exists"_sv);
     }
 
-    constexpr operator query<string_view, bool>()
+    constexpr auto exists()
     {
         return query<string_view, bool>(std::move(name), true, "$exists"_sv);
     }
