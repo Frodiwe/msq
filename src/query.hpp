@@ -25,10 +25,7 @@ namespace bson_builder = bsoncxx::builder::basic;
 
 using string_view = bsoncxx::stdx::string_view;
 
-constexpr string_view operator "" _sv(const char* str, size_t len)
-{
-    return string_view{str, len};
-}
+constexpr string_view operator "" _sv(const char* str, size_t len);
 
 class key;
 
@@ -36,7 +33,6 @@ template<typename ValueL, typename ValueR>
 class query {
     using document = bsoncxx::document::value;
     using document_view_or_value = bsoncxx::document::view_or_value;
-    using string_view = bsoncxx::stdx::string_view;
 
 private:
     ValueL lhs;
@@ -152,6 +148,11 @@ public:
         return query<key, bool>(std::move(*this), true, "$exists"_sv);
     }
 };
+
+constexpr string_view operator "" _sv(const char* str, size_t len)
+{
+    return string_view{str, len};
+}
 
 constexpr key operator "" _k(const char* str, size_t len)
 {

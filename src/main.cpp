@@ -8,7 +8,7 @@ int main()
 {
     using msq::operator""_k;
 
-    constexpr auto q = "lol"_k == 7 and "kek"_k != "bar" or "bar"_k.not_exists() and "foo"_k.exists();
+    constexpr auto q = "foo"_k != "bar" and "foo"_k <= 5 or "bar"_k.not_exists() and "foo"_k.exists();
 
     std::cout << bsoncxx::to_json(bsoncxx::document::value{q}) << std::endl;
 
