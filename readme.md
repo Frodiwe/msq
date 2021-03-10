@@ -1,10 +1,8 @@
 # MongoDB Simple Query
 
-MongoDB Simple Query (msq) is a header-only C++ library which provides simple way for building MongoDB queries structure
-at compile time using operators overloading
-
-Note: query structure is built at compile-time but query itself is built during runtime due to use of bsoncxx library
-for making actual queries
+MongoDB Simple Query (msq) is a header-only C++17 library which provides simple way for building MongoDB queries structure
+at compile time using operators overloading. Query structure is built at compile-time but query itself is built during runtime due to use of bsoncxx library
+for making actual queries.
 
 ## Dependencies
 
