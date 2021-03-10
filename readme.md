@@ -24,7 +24,7 @@ int main()
     
     constexpr auto q = "foo"_k == 13;
     
-    std::cout << bsoncxx::to_json(bsoncxx::document::value{ q }) << std::endl;
+    std::cout << bsoncxx::to_json(bsoncxx::document::value{q}) << std::endl;
     
     return 0;
 }
@@ -50,7 +50,7 @@ int main()
     
     constexpr auto q = "foo"_k.exists();
     
-    std::cout << bsoncxx::to_json(bsoncxx::document::value{ q }) << std::endl;
+    std::cout << bsoncxx::to_json(bsoncxx::document::value{q}) << std::endl;
     
     return 0;
 }
@@ -76,7 +76,7 @@ int main()
     
     constexpr auto q = "foo"_k != "bar" and "foo"_k <= 5 or "bar"_k.not_exists() and "foo"_k.exists();
     
-    std::cout << bsoncxx::to_json(bsoncxx::document::value{ q }) << std::endl;
+    std::cout << bsoncxx::to_json(bsoncxx::document::value{q}) << std::endl;
     
     return 0;
 }
